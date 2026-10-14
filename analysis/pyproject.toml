@@ -1,0 +1,26 @@
+[project]
+name = "analysis"
+version = "0.1.0"
+description = "Compare and analyze multiple promptfoo eval runs from the local promptfoo DB"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=2",
+    "scipy>=1.14",
+    "matplotlib>=3.9",
+    "tabulate>=0.9",
+    "jupyterlab>=4.2",
+    "ipykernel>=6.29",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+# Install compare_lib into the venv (editable) so the notebook can import it from any working
+# directory, e.g. a Jupyter server started from the repo root.
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["compare_lib.py"]
