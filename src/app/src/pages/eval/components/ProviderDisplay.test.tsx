@@ -2,7 +2,7 @@ import { TooltipProvider } from '@app/components/ui/tooltip';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { filterConfigForDisplay, ProviderDisplay } from './ProviderDisplay';
+import { filterConfigForDisplay, ProviderConfigLine, ProviderDisplay } from './ProviderDisplay';
 
 describe('filterConfigForDisplay', () => {
   describe('excluded fields', () => {
@@ -704,5 +704,52 @@ describe('ProviderDisplay', () => {
       expect(tooltip?.textContent).toContain('suffix');
       expect(tooltip?.textContent).toContain('user');
     });
+  });
+});
+
+describe('ProviderConfigLine', () => {
+  it('shows config as one line with abbreviated keys, without hovering', () => {
+    const { container } = render(
+      <ProviderConfigLine
+        providerString="ollama:chat:qwen3-vl:4b"
+        providersArray={[
+          {
+            id: 'ollama:chat:qwen3-vl:4b',
+            config: {
+              temperature: 0.1,
+              num_predict: 2048,
+              seed: 512,
+              think: 'low',
+              top_p: 0.9,
+              showThinking: false,
+            },
+          },
+        ]}
+      />,
+    );
+    expect(container.textContent).toBe(
+      'num_pred 2048 seed 512 show_think false temp 0.1 think low top_p 0.9',
+    );
+  });
+
+  it('matches the provider by label when several share an id', () => {
+    const { container } = render(
+      <ProviderConfigLine
+        providerString="t2"
+        providersArray={[
+          { id: 'ollama:chat:m', label: 't1', config: { temperature: 0.2 } },
+          { id: 'ollama:chat:m', label: 't2', config: { temperature: 0.8 } },
+        ]}
+        fallbackIndex={1}
+      />,
+    );
+    expect(container.textContent).toBe('temp 0.8');
+  });
+
+  it('renders nothing when the provider has no config', () => {
+    const { container } = render(
+      <ProviderConfigLine providerString="openai:gpt-4o" providersArray={['openai:gpt-4o']} />,
+    );
+    expect(container.textContent).toBe('');
   });
 });

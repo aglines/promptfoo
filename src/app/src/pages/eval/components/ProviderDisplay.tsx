@@ -3,8 +3,10 @@ import type { ReactNode } from 'react';
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@app/components/ui/tooltip';
 import { cn } from '@app/lib/utils';
+import { formatConfigInline } from '@promptfoo/util/configDisplay';
 import * as yaml from 'js-yaml';
 import { findProviderConfig, getProviderDisplayName, type ProviderDef } from './providerConfig';
+import type { ProviderOptions } from '@promptfoo/types';
 
 interface ProviderDisplayProps {
   /** The provider string from CompletedPrompt (e.g., "google:gemini-3-flash-preview") */
@@ -72,6 +74,26 @@ export function filterConfigForDisplay(obj: any, depth = 0): any {
   }
 
   return Object.keys(result).length > 0 ? result : undefined;
+}
+
+/**
+ * The provider config fields worth showing: unwraps the ProviderOptions structure,
+ * drops id/label (shown as the provider name) and filters out non-useful fields.
+ */
+export function getDisplayConfig(
+  providerConfig: ProviderOptions | undefined,
+): Record<string, unknown> | undefined {
+  if (!providerConfig) {
+    return undefined;
+  }
+  // biome-ignore lint/suspicious/noExplicitAny: config shape varies by provider
+  let configToShow: any = providerConfig.config || providerConfig;
+  // Handle double-nested config (sometimes config.config exists)
+  if (configToShow.config && typeof configToShow.config === 'object') {
+    configToShow = configToShow.config;
+  }
+  const { id: _id, label: _label, ...restConfig } = configToShow;
+  return filterConfigForDisplay(restConfig);
 }
 
 /**
@@ -175,19 +197,7 @@ export function ProviderDisplay({
     }
 
     try {
-      // Extract the actual config - unwrap ProviderOptions structure
-      let configToShow = providerConfig.config || providerConfig;
-
-      // Handle double-nested config (sometimes config.config exists)
-      if (configToShow.config && typeof configToShow.config === 'object') {
-        configToShow = configToShow.config;
-      }
-
-      // Remove id/label from the config display (shown separately or in provider name)
-      const { id: _id, label: _label, ...restConfig } = configToShow;
-
-      // Filter the config (remove non-useful fields like callApi, transform, env)
-      const filteredConfig = filterConfigForDisplay(restConfig);
+      const filteredConfig = getDisplayConfig(providerConfig);
 
       // Generate YAML for config - wrap in config: to match actual YAML structure
       let configYaml: string | null = null;
@@ -266,5 +276,27 @@ export function ProviderDisplay({
         </div>
       </TooltipContent>
     </Tooltip>
+  );
+}
+
+/**
+ * Provider config as one always-visible line (e.g. `num_pred 2048 seed 512 temp 0.1`).
+ * Renders nothing when the provider has no config to show.
+ */
+export function ProviderConfigLine({
+  providerString,
+  providersArray,
+  fallbackIndex,
+}: ProviderDisplayProps) {
+  const text = useMemo(() => {
+    const { config } = findProviderConfig(providerString, providersArray, fallbackIndex);
+    return formatConfigInline(getDisplayConfig(config));
+  }, [providerString, providersArray, fallbackIndex]);
+
+  if (!text) {
+    return null;
+  }
+  return (
+    <div className="provider-config-line font-mono text-xs text-muted-foreground mb-2">{text}</div>
   );
 }

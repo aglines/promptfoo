@@ -49,7 +49,7 @@ import CustomMetricsDialog from './CustomMetricsDialog';
 import EvalOutputCell from './EvalOutputCell';
 import EvalOutputPromptDialog from './EvalOutputPromptDialog';
 import { useFilterMode } from './FilterModeProvider';
-import { ProviderDisplay } from './ProviderDisplay';
+import { ProviderConfigLine, ProviderDisplay } from './ProviderDisplay';
 import { type ProviderDef } from './providerConfig';
 import { useResultsViewSettingsStore, useTableStore } from './store';
 import TruncatedText from './TruncatedText';
@@ -1222,6 +1222,13 @@ function PromptColumnHeader({
           </div>
         ) : null}
       </div>
+      {prompt.provider ? (
+        <ProviderConfigLine
+          providerString={formatProviderString(prompt)}
+          providersArray={config?.providers as ProviderDef[] | undefined}
+          fallbackIndex={idx}
+        />
+      ) : null}
       <TableHeader
         className="prompt-container collapse-font-small"
         text={prompt.label || prompt.display || prompt.raw}
