@@ -1,0 +1,11 @@
+# What each model supports, keyed by model name (the provider id without
+# "ollama:chat:"). sweep.py refuses to generate a config that uses a value not
+# listed here. Models not listed may only use think: true or false.
+#
+# think values: true, false, low, medium, high, max
+qwen3-vl:4b:
+  think: [true, false]
+qwen3.5:4b:
+  think: [true, false]
+gpt-oss:20b:
+  think: [true, false, low, medium, high, max]

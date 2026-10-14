@@ -1,0 +1,1383 @@
+{
+  "evalId": "eval-yh9-2026-10-14T12:39:40",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-10-14T12:39:40.874Z",
+    "prompts": [
+      {
+        "id": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "raw": "Answer with only the number: {{question}}",
+        "label": "Answer with only the number: {{question}}",
+        "provider": "id=qwen3-vl:4b temperature=0.2",
+        "metrics": {
+          "score": 2,
+          "testPassCount": 2,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 2,
+          "assertFailCount": 0,
+          "totalLatencyMs": 22932,
+          "tokenUsage": {
+            "prompt": 118,
+            "completion": 555,
+            "cached": 0,
+            "total": 673,
+            "numRequests": 2,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 86,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      },
+      {
+        "id": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "raw": "Answer with only the number: {{question}}",
+        "label": "Answer with only the number: {{question}}",
+        "provider": "id=qwen3-vl:4b temperature=0.8",
+        "metrics": {
+          "score": 2,
+          "testPassCount": 2,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 2,
+          "assertFailCount": 0,
+          "totalLatencyMs": 21454,
+          "tokenUsage": {
+            "prompt": 118,
+            "completion": 718,
+            "cached": 0,
+            "total": 836,
+            "numRequests": 2,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 39,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      },
+      {
+        "id": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "raw": "Answer with only the number: {{question}}",
+        "label": "Answer with only the number: {{question}}",
+        "provider": "id=qwen3.5:4b temperature=0.2",
+        "metrics": {
+          "score": 1,
+          "testPassCount": 1,
+          "testFailCount": 1,
+          "testErrorCount": 0,
+          "assertPassCount": 1,
+          "assertFailCount": 1,
+          "totalLatencyMs": 12117,
+          "tokenUsage": {
+            "prompt": 126,
+            "completion": 4,
+            "cached": 0,
+            "total": 130,
+            "numRequests": 2,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      },
+      {
+        "id": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "raw": "Answer with only the number: {{question}}",
+        "label": "Answer with only the number: {{question}}",
+        "provider": "id=qwen3.5:4b temperature=0.8",
+        "metrics": {
+          "score": 1,
+          "testPassCount": 1,
+          "testFailCount": 1,
+          "testErrorCount": 0,
+          "assertPassCount": 1,
+          "assertFailCount": 1,
+          "totalLatencyMs": 12130,
+          "tokenUsage": {
+            "prompt": 126,
+            "completion": 4,
+            "cached": 0,
+            "total": 130,
+            "numRequests": 2,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 118,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "error": "Expected 18, got 1",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "Expected 18, got 1",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "Expected 18, got 1",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "0339d415-48f9-4200-a0fc-e876fb0bfabe",
+        "latencyMs": 11919,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 2,
+        "provider": {
+          "id": "ollama:chat:qwen3.5:4b",
+          "label": "id=qwen3.5:4b temperature=0.2"
+        },
+        "response": {
+          "output": "1",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 82,
+            "completion": 2,
+            "cached": 0,
+            "total": 84,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "gsm8k-0",
+          "vars": {
+            "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+            "expected": "18"
+          },
+          "metadata": {
+            "gsm8k_idx": 0
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 82,
+          "completion": 2,
+          "cached": 0,
+          "total": 84,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "expected": "18"
+        },
+        "metadata": {
+          "gsm8k_idx": 0,
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "Expected 18, got 1",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "Expected 18, got 1",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "Expected 18, got 1",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "f3079582-1041-4dd6-9d48-b73a7f44515f",
+        "latencyMs": 12014,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 3,
+        "provider": {
+          "id": "ollama:chat:qwen3.5:4b",
+          "label": "id=qwen3.5:4b temperature=0.8"
+        },
+        "response": {
+          "output": "1",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 82,
+            "completion": 2,
+            "cached": 0,
+            "total": 84,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 78,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "gsm8k-0",
+          "vars": {
+            "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+            "expected": "18"
+          },
+          "metadata": {
+            "gsm8k_idx": 0
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 82,
+          "completion": 2,
+          "cached": 0,
+          "total": 84,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 78,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "expected": "18"
+        },
+        "metadata": {
+          "gsm8k_idx": 0,
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 18, got 18",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "6cf83fe4-026c-4a65-a6af-010cc8947212",
+        "latencyMs": 12659,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 1,
+        "provider": {
+          "id": "ollama:chat:qwen3-vl:4b",
+          "label": "id=qwen3-vl:4b temperature=0.8"
+        },
+        "response": {
+          "output": "18",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 78,
+            "completion": 511,
+            "cached": 0,
+            "total": 589,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-0",
+          "vars": {
+            "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+            "expected": "18"
+          },
+          "metadata": {
+            "gsm8k_idx": 0
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 78,
+          "completion": 511,
+          "cached": 0,
+          "total": 589,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "expected": "18"
+        },
+        "metadata": {
+          "gsm8k_idx": 0,
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 18, got 18",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "822ac1bd-833c-47c9-86e9-d22238b25946",
+        "latencyMs": 16247,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 0,
+        "provider": {
+          "id": "ollama:chat:qwen3-vl:4b",
+          "label": "id=qwen3-vl:4b temperature=0.2"
+        },
+        "response": {
+          "output": "18",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 78,
+            "completion": 328,
+            "cached": 0,
+            "total": 406,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 77,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-0",
+          "vars": {
+            "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+            "expected": "18"
+          },
+          "metadata": {
+            "gsm8k_idx": 0
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 78,
+          "completion": 328,
+          "cached": 0,
+          "total": 406,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 77,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "expected": "18"
+        },
+        "metadata": {
+          "gsm8k_idx": 0,
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 3, got 3",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "20c1cf3d-65e6-4997-87d2-4a5a9fe9a338",
+        "latencyMs": 198,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 2,
+        "provider": {
+          "id": "ollama:chat:qwen3.5:4b",
+          "label": "id=qwen3.5:4b temperature=0.2"
+        },
+        "response": {
+          "output": "3",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 44,
+            "completion": 2,
+            "cached": 0,
+            "total": 46,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-1",
+          "vars": {
+            "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+            "expected": "3"
+          },
+          "metadata": {
+            "gsm8k_idx": 1
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 44,
+          "completion": 2,
+          "cached": 0,
+          "total": 46,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "expected": "3"
+        },
+        "metadata": {
+          "gsm8k_idx": 1,
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 3, got 3",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "d8efcff3-4839-416d-881c-1f425f150a74",
+        "latencyMs": 116,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 3,
+        "provider": {
+          "id": "ollama:chat:qwen3.5:4b",
+          "label": "id=qwen3.5:4b temperature=0.8"
+        },
+        "response": {
+          "output": "3",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 44,
+            "completion": 2,
+            "cached": 0,
+            "total": 46,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 40,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-1",
+          "vars": {
+            "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+            "expected": "3"
+          },
+          "metadata": {
+            "gsm8k_idx": 1
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 44,
+          "completion": 2,
+          "cached": 0,
+          "total": 46,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 40,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "expected": "3"
+        },
+        "metadata": {
+          "gsm8k_idx": 1,
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 3, got 3",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "557061ca-5505-4f2f-a9c1-d2de736e92ad",
+        "latencyMs": 6685,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 0,
+        "provider": {
+          "id": "ollama:chat:qwen3-vl:4b",
+          "label": "id=qwen3-vl:4b temperature=0.2"
+        },
+        "response": {
+          "output": "3",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 40,
+            "completion": 227,
+            "cached": 0,
+            "total": 267,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 9,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-1",
+          "vars": {
+            "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+            "expected": "3"
+          },
+          "metadata": {
+            "gsm8k_idx": 1
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 40,
+          "completion": 227,
+          "cached": 0,
+          "total": 267,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 9,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "expected": "3"
+        },
+        "metadata": {
+          "gsm8k_idx": 1,
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 3, got 3",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "a8b1aa7b-a93b-4beb-8c2b-8a38fa4be557",
+        "latencyMs": 8795,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 1,
+        "provider": {
+          "id": "ollama:chat:qwen3-vl:4b",
+          "label": "id=qwen3-vl:4b temperature=0.8"
+        },
+        "response": {
+          "output": "3",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 40,
+            "completion": 207,
+            "cached": 0,
+            "total": 247,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 39,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-1",
+          "vars": {
+            "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+            "expected": "3"
+          },
+          "metadata": {
+            "gsm8k_idx": 1
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 40,
+          "completion": 207,
+          "cached": 0,
+          "total": 247,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 39,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "expected": "3"
+        },
+        "metadata": {
+          "gsm8k_idx": 1,
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 6,
+      "failures": 2,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 488,
+        "completion": 1281,
+        "cached": 0,
+        "total": 1769,
+        "numRequests": 8,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 243,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 20954,
+      "evaluationDurationMs": 20954
+    }
+  },
+  "config": {
+    "description": "GSM8k - sweep id [qwen3-vl:4b, qwen3.5:4b] x temperature [0.2, 0.8]",
+    "prompts": [
+      "Answer with only the number: {{question}}"
+    ],
+    "providers": [
+      {
+        "id": "ollama:chat:qwen3-vl:4b",
+        "config": {
+          "num_predict": 2048,
+          "seed": 512,
+          "temperature": 0.2,
+          "think": false,
+          "showThinking": false
+        },
+        "label": "id=qwen3-vl:4b temperature=0.2"
+      },
+      {
+        "id": "ollama:chat:qwen3-vl:4b",
+        "config": {
+          "num_predict": 2048,
+          "seed": 512,
+          "temperature": 0.8,
+          "think": false,
+          "showThinking": false
+        },
+        "label": "id=qwen3-vl:4b temperature=0.8"
+      },
+      {
+        "id": "ollama:chat:qwen3.5:4b",
+        "config": {
+          "num_predict": 2048,
+          "seed": 512,
+          "temperature": 0.2,
+          "think": false,
+          "showThinking": false
+        },
+        "label": "id=qwen3.5:4b temperature=0.2"
+      },
+      {
+        "id": "ollama:chat:qwen3.5:4b",
+        "config": {
+          "num_predict": 2048,
+          "seed": 512,
+          "temperature": 0.8,
+          "think": false,
+          "showThinking": false
+        },
+        "label": "id=qwen3.5:4b temperature=0.8"
+      }
+    ],
+    "tests": [
+      {
+        "description": "gsm8k-0",
+        "vars": {
+          "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "expected": "18"
+        },
+        "metadata": {
+          "gsm8k_idx": 0
+        }
+      },
+      {
+        "description": "gsm8k-1",
+        "vars": {
+          "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "expected": "3"
+        },
+        "metadata": {
+          "gsm8k_idx": 1
+        }
+      }
+    ],
+    "outputPath": [
+      "eval-2026-10-14T14_39_38.json"
+    ],
+    "extensions": [],
+    "defaultTest": {
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://numeric_match.py"
+        }
+      ]
+    },
+    "basePath": "/home/ad/code/promptfoo/gsm8k-eval"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.124.1",
+    "nodeVersion": "v24.21.0",
+    "platform": "linux",
+    "arch": "x64",
+    "exportedAt": "2026-10-14T12:40:01.869Z",
+    "evaluationCreatedAt": "2026-10-14T12:39:40.874Z"
+  },
+  "vars": [
+    "question",
+    "expected"
+  ],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": true,
+    "repeat": 1,
+    "maxConcurrency": 4,
+    "cache": false
+  }
+}

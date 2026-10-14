@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent / "test.jsonl"
-DEFAULT_N = 3
+DEFAULT_N = 2
 
 
 def create_tests(config=None):

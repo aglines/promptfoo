@@ -4,7 +4,23 @@ import copy
 
 import yaml
 
-from sweep import SCHEMA_LINE, build_config, main, model_name, parse_value, set_path
+import sweep
+from sweep import (
+    DEFAULT_MODELS_FILE,
+    OllamaError,
+    is_generated,
+    SCHEMA_LINE,
+    build_config,
+    check_provider,
+    load_model_rules,
+    main,
+    model_name,
+    parse_set,
+    parse_sweep,
+    parse_value,
+    set_path,
+    validate,
+)
 
 
 @pytest.mark.parametrize(
@@ -54,6 +70,15 @@ def test_set_path_empty_segment_errors():
         set_path({}, "config..temperature", 0.5)
 
 
+THINKING_MODEL = {"capabilities": ["completion", "tools", "thinking"]}
+
+
+@pytest.fixture(autouse=True)
+def fake_ollama(monkeypatch):
+    """Never call the real Ollama from tests: every model is pulled and can think."""
+    monkeypatch.setattr(sweep, "ollama_show", lambda model: THINKING_MODEL)
+
+
 BASE = {
     "description": "GSM8k - sweep temperature",
     "prompts": ["Answer with only the number: {{question}}"],
@@ -81,7 +106,7 @@ def test_model_name(provider_id, expected):
 
 
 def test_build_config_temperature():
-    out = build_config(BASE, "config.temperature", [0.25, 0.5, 0.75, 1.0], "GSM8k")
+    out = build_config(BASE, [("config.temperature", [0.25, 0.5, 0.75, 1.0])], [], "GSM8k")
     assert out["description"] == "GSM8k - sweep temperature [0.25, 0.5, 0.75, 1.0] (qwen3-vl:4b)"
     assert [p["config"]["temperature"] for p in out["providers"]] == [0.25, 0.5, 0.75, 1.0]
     assert [p["label"] for p in out["providers"]] == [
@@ -100,12 +125,12 @@ def test_build_config_temperature():
 
 def test_build_config_does_not_mutate_base():
     before = copy.deepcopy(BASE)
-    build_config(BASE, "config.top_p", [0.9], "X")
+    build_config(BASE, [("config.top_p", [0.9])], [], "X")
     assert BASE == before
 
 
 def test_build_config_bool_values_and_new_key():
-    out = build_config(BASE, "config.think", [True, False], "GSM8k")
+    out = build_config(BASE, [("config.think", [True, False])], [], "GSM8k")
     assert [p["config"]["think"] for p in out["providers"]] == [True, False]
     assert [p["label"] for p in out["providers"]] == ["think=true", "think=false"]
     assert out["description"] == "GSM8k - sweep think [true, false] (qwen3-vl:4b)"
@@ -113,14 +138,14 @@ def test_build_config_bool_values_and_new_key():
 
 def test_build_config_string_provider():
     base = {"providers": ["ollama:chat:qwen3-vl:4b"]}
-    out = build_config(base, "config.temperature", [0.1], "")
+    out = build_config(base, [("config.temperature", [0.1])], [], "")
     assert out["providers"] == [{"id": "ollama:chat:qwen3-vl:4b", "config": {"temperature": 0.1}, "label": "temperature=0.1"}]
     assert out["description"] == "sweep temperature [0.1] (qwen3-vl:4b)"
 
 
 def test_build_config_no_providers_errors():
     with pytest.raises(ValueError):
-        build_config({"prompts": ["x"]}, "config.temperature", [0.1], "X")
+        build_config({"prompts": ["x"]}, [("config.temperature", [0.1])], [], "X")
 
 
 def test_main_writes_default_config_next_to_base(tmp_path, capsys):
@@ -138,11 +163,11 @@ def test_main_writes_default_config_next_to_base(tmp_path, capsys):
 
 def test_main_name_override_and_output(tmp_path):
     base_file = tmp_path / "base.yaml"
-    base_file.write_text(yaml.safe_dump({"providers": [{"id": "openai:gpt-4o"}]}))
+    base_file.write_text(yaml.safe_dump({"providers": [{"id": "ollama:qwen3:4b"}]}))
     out_file = tmp_path / "custom.yaml"
-    main([str(base_file), "--path", "config.max_tokens", "--values", "64", "-o", str(out_file), "--name", "Demo"])
+    main([str(base_file), "--path", "config.num_predict", "--values", "64", "-o", str(out_file), "--name", "Demo"])
     cfg = yaml.safe_load(out_file.read_text())
-    assert cfg["description"] == "Demo - sweep max_tokens [64] (gpt-4o)"
+    assert cfg["description"] == "Demo - sweep num_predict [64] (qwen3:4b)"
 
 
 def test_main_overwrites_previously_generated_output(tmp_path):
@@ -175,9 +200,336 @@ def test_main_refuses_to_overwrite_base(tmp_path):
 
 
 def test_build_config_sweep_provider_id():
-    out = build_config(BASE, "id", ["ollama:chat:qwen3-vl:4b", "ollama:chat:qwen3.5:4b"], "GSM8k")
+    out = build_config(BASE, [("id", ["ollama:chat:qwen3-vl:4b", "ollama:chat:qwen3.5:4b"])], [], "GSM8k")
     assert [p["id"] for p in out["providers"]] == ["ollama:chat:qwen3-vl:4b", "ollama:chat:qwen3.5:4b"]
     assert [p["label"] for p in out["providers"]] == ["id=qwen3-vl:4b", "id=qwen3.5:4b"]
     assert out["description"] == "GSM8k - sweep id [qwen3-vl:4b, qwen3.5:4b]"
     # Config from the template is kept for every provider.
     assert all(p["config"]["temperature"] == 0.25 for p in out["providers"])
+
+
+def test_parse_sweep_and_set():
+    assert parse_sweep("config.think=false,true,low") == ("config.think", [False, True, "low"])
+    assert parse_sweep("id=ollama:chat:qwen3-vl:4b,ollama:chat:qwen3.5:4b") == (
+        "id",
+        ["ollama:chat:qwen3-vl:4b", "ollama:chat:qwen3.5:4b"],
+    )
+    assert parse_set("config.num_predict=4096") == ("config.num_predict", 4096)
+
+
+@pytest.mark.parametrize("arg", ["config.think", "=true", "config.think=", "config.think=true,,false"])
+def test_parse_sweep_errors(arg):
+    with pytest.raises(ValueError):
+        parse_sweep(arg)
+
+
+def test_build_config_two_axes_every_combination():
+    axes = [
+        ("id", ["ollama:chat:qwen3-vl:4b", "ollama:chat:qwen3.5:4b"]),
+        ("config.think", [False, True]),
+    ]
+    out = build_config(BASE, axes, [], "GSM8k")
+    got = [(p["id"], p["config"]["think"], p["label"]) for p in out["providers"]]
+    assert got == [
+        ("ollama:chat:qwen3-vl:4b", False, "id=qwen3-vl:4b think=false"),
+        ("ollama:chat:qwen3-vl:4b", True, "id=qwen3-vl:4b think=true"),
+        ("ollama:chat:qwen3.5:4b", False, "id=qwen3.5:4b think=false"),
+        ("ollama:chat:qwen3.5:4b", True, "id=qwen3.5:4b think=true"),
+    ]
+    assert out["description"] == "GSM8k - sweep id [qwen3-vl:4b, qwen3.5:4b] x think [false, true]"
+
+
+def test_build_config_two_axes_without_id_keeps_model_suffix():
+    out = build_config(BASE, [("config.temperature", [0.1, 0.2]), ("config.seed", [1, 2, 3])], [], "GSM8k")
+    assert len(out["providers"]) == 6
+    assert out["description"] == "GSM8k - sweep temperature [0.1, 0.2] x seed [1, 2, 3] (qwen3-vl:4b)"
+
+
+def test_build_config_set_applies_to_every_provider():
+    out = build_config(
+        BASE,
+        [("config.temperature", [0.1, 0.2])],
+        [("config.num_predict", 4096), ("config.seed", 7)],
+        "GSM8k",
+    )
+    assert all(p["config"]["num_predict"] == 4096 and p["config"]["seed"] == 7 for p in out["providers"])
+    # --set values are not part of the description or labels.
+    assert out["description"] == "GSM8k - sweep temperature [0.1, 0.2] (qwen3-vl:4b)"
+    assert [p["label"] for p in out["providers"]] == ["temperature=0.1", "temperature=0.2"]
+
+
+@pytest.mark.parametrize(
+    "axes, sets",
+    [
+        ([], []),
+        ([("config.seed", [1]), ("config.seed", [2])], []),
+        ([("config.seed", [1])], [("config.seed", 2)]),
+        ([("config.seed", [])], []),
+    ],
+)
+def test_build_config_axis_errors(axes, sets):
+    with pytest.raises(ValueError):
+        build_config(BASE, axes, sets, "X")
+
+
+def test_main_sweep_and_set_flags(tmp_path):
+    base_file = tmp_path / "base.yaml"
+    base_file.write_text(yaml.safe_dump(BASE, sort_keys=False))
+    main([
+        str(base_file),
+        "--sweep", "id=ollama:chat:qwen3-vl:4b,ollama:chat:qwen3.5:4b",
+        "--sweep", "config.think=false,true",
+        "--set", "config.num_predict=4096",
+    ])
+    cfg = yaml.safe_load((tmp_path / "promptfooconfig.yaml").read_text())
+    assert len(cfg["providers"]) == 4
+    assert all(p["config"]["num_predict"] == 4096 for p in cfg["providers"])
+
+
+def test_main_path_values_combines_with_sweep(tmp_path):
+    base_file = tmp_path / "base.yaml"
+    base_file.write_text(yaml.safe_dump(BASE, sort_keys=False))
+    main([str(base_file), "--sweep", "config.think=false,true", "--path", "config.seed", "--values", "1", "2"])
+    cfg = yaml.safe_load((tmp_path / "promptfooconfig.yaml").read_text())
+    assert [p["label"] for p in cfg["providers"]] == [
+        "think=false seed=1",
+        "think=false seed=2",
+        "think=true seed=1",
+        "think=true seed=2",
+    ]
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [
+        [],
+        ["--path", "config.seed"],
+        ["--sweep", "config.think"],
+        ["--sweep", "config.seed=1", "--set", "config.seed=2"],
+    ],
+)
+def test_main_flag_errors(tmp_path, extra):
+    base_file = tmp_path / "base.yaml"
+    base_file.write_text(yaml.safe_dump(BASE, sort_keys=False))
+    with pytest.raises(SystemExit):
+        main([str(base_file), *extra])
+    assert not (tmp_path / "promptfooconfig.yaml").exists()
+
+
+RULES = {
+    "qwen3-vl:4b": {"think": [True, False]},
+    "gpt-oss:20b": {"think": [False, "low", "medium", "high"]},
+}
+
+
+def provider(model, think, label="p"):
+    return {"id": f"ollama:chat:{model}", "config": {"think": think}, "label": label}
+
+
+@pytest.mark.parametrize(
+    "p",
+    [
+        provider("qwen3-vl:4b", True),
+        provider("qwen3-vl:4b", False),
+        provider("gpt-oss:20b", "low"),
+        provider("gpt-oss:20b", "high"),
+        provider("unlisted:1b", True),  # unlisted: true/false allowed
+        provider("unlisted:1b", False),
+        {"id": "ollama:chat:qwen3-vl:4b", "config": {"temperature": 0.5}},  # think unset
+        {"id": "ollama:chat:qwen3-vl:4b"},  # no config at all
+    ],
+)
+def test_check_provider_allowed(p):
+    assert check_provider(p, RULES) == []
+
+
+@pytest.mark.parametrize(
+    "p, fragment",
+    [
+        (provider("qwen3-vl:4b", "low"), "models.yaml allows [true, false]"),
+        (provider("gpt-oss:20b", True), "models.yaml allows [false, low, medium, high]"),
+        (provider("gpt-oss:20b", "max"), "not allowed for gpt-oss:20b"),
+        (provider("unlisted:1b", "low"), "not in models.yaml"),
+        (provider("qwen3-vl:4b", "maybe"), "not a valid value"),
+        (provider("qwen3-vl:4b", 1), "not a valid value"),  # 1 is not True
+    ],
+)
+def test_check_provider_refused(p, fragment):
+    problems = check_provider(p, RULES)
+    assert len(problems) == 1
+    assert fragment in problems[0]
+    assert problems[0].startswith("p: ")  # problems name the provider label
+
+
+def test_listed_model_without_think_rule_allows_only_bools():
+    rules = {"qwen3-vl:4b": {}}
+    assert check_provider(provider("qwen3-vl:4b", True), rules) == []
+    assert check_provider(provider("qwen3-vl:4b", "low"), rules)
+
+
+def test_validate_collects_every_problem():
+    ps = [provider("qwen3-vl:4b", "low", "a"), provider("qwen3-vl:4b", True, "b"), provider("x:1b", "max", "c")]
+    problems = validate(ps, RULES)
+    assert [p.split(":")[0] for p in problems] == ["a", "c"]
+
+
+def test_load_model_rules_seeded_file():
+    rules = load_model_rules(DEFAULT_MODELS_FILE)
+    assert rules["qwen3-vl:4b"] == {"think": [True, False]}
+    assert rules["gpt-oss:20b"] == {"think": [True, False, "low", "medium", "high", "max"]}
+
+
+def test_load_model_rules_missing_file_means_no_rules(tmp_path):
+    assert load_model_rules(tmp_path / "nope.yaml") == {}
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "- a\n- b\n",  # not a mapping
+        "m:1b: 3\n",  # rule not a mapping
+        "m:1b:\n  think: low\n",  # think not a list
+        "m:1b:\n  think: [maxx]\n",  # typo
+    ],
+)
+def test_load_model_rules_bad_file(tmp_path, text):
+    f = tmp_path / "models.yaml"
+    f.write_text(text)
+    with pytest.raises(ValueError):
+        load_model_rules(f)
+
+
+def write_base(tmp_path):
+    base_file = tmp_path / "base.yaml"
+    base_file.write_text(yaml.safe_dump(BASE, sort_keys=False))
+    models = tmp_path / "models.yaml"
+    models.write_text(yaml.safe_dump(RULES))
+    return base_file, models
+
+
+def test_main_refuses_unsupported_think_and_writes_nothing(tmp_path, capsys):
+    base_file, models = write_base(tmp_path)
+    with pytest.raises(SystemExit) as exc:
+        main([str(base_file), "--models", str(models), "--sweep", "config.think=false,low"])
+    assert exc.value.code == 2
+    assert not (tmp_path / "promptfooconfig.yaml").exists()
+    err = capsys.readouterr().err
+    assert "refused" in err
+    assert "think=low: think=low is not allowed for qwen3-vl:4b" in err
+
+
+def test_main_refuses_think_from_set(tmp_path):
+    base_file, models = write_base(tmp_path)
+    with pytest.raises(SystemExit):
+        main([str(base_file), "--models", str(models), "--sweep", "config.seed=1,2", "--set", "config.think=high"])
+    assert not (tmp_path / "promptfooconfig.yaml").exists()
+
+
+def test_main_allows_levels_for_listed_model(tmp_path):
+    base_file, models = write_base(tmp_path)
+    main([
+        str(base_file), "--models", str(models),
+        "--sweep", "id=ollama:chat:gpt-oss:20b",
+        "--sweep", "config.think=low,high",
+    ])
+    cfg = yaml.safe_load((tmp_path / "promptfooconfig.yaml").read_text())
+    assert [p["config"]["think"] for p in cfg["providers"]] == ["low", "high"]
+
+
+def test_main_missing_models_file_errors(tmp_path):
+    base_file, _ = write_base(tmp_path)
+    with pytest.raises(SystemExit):
+        main([str(base_file), "--models", str(tmp_path / "nope.yaml"), "--sweep", "config.seed=1"])
+
+
+# --- Step 3: Ollama-only guard, Ollama lookup, stale output ---
+
+NO_THINKING_MODEL = {"capabilities": ["completion", "vision"]}
+
+
+def fake_show(known):
+    """A show_model stand-in: `known` maps model -> info; anything else is not pulled."""
+    calls = []
+
+    def show(model):
+        calls.append(model)
+        return known.get(model)
+
+    show.calls = calls
+    return show
+
+
+def test_non_ollama_provider_refused():
+    p = {"id": "openai:chat:gpt-4o", "label": "x"}
+    problems = check_provider(p, RULES)
+    assert len(problems) == 1 and "only ollama: providers are supported" in problems[0]
+
+
+def test_validate_missing_model_refused():
+    show = fake_show({"qwen3-vl:4b": THINKING_MODEL})
+    problems = validate([provider("qwen3-vl:4b", False, "a"), provider("nope:1b", False, "b")], RULES, show)
+    assert problems == ["b: nope:1b is not pulled in Ollama"]
+
+
+@pytest.mark.parametrize("think, refused", [(True, True), ("low", True), (False, False), (None, False)])
+def test_validate_thinking_capability(think, refused):
+    show = fake_show({"plain:1b": NO_THINKING_MODEL})
+    rules = {"plain:1b": {"think": [True, False, "low"]}}
+    p = {"id": "ollama:chat:plain:1b", "label": "a"}
+    if think is not None:
+        p["config"] = {"think": think}
+    problems = validate([p], rules, show)
+    assert bool(problems) is refused
+    if refused:
+        assert "has no 'thinking' capability" in problems[0]
+
+
+def test_validate_unreachable_ollama_reports_once():
+    def down(model):
+        raise OllamaError("connection refused")
+
+    problems = validate([provider("qwen3-vl:4b", False, "a"), provider("qwen3.5:4b", False, "b")], RULES, down)
+    assert len(problems) == 1
+    assert problems[0].startswith("Ollama not reachable at ") and "connection refused" in problems[0]
+
+
+def test_validate_calls_ollama_once_per_model():
+    show = fake_show({"qwen3-vl:4b": THINKING_MODEL})
+    ps = [provider("qwen3-vl:4b", v, str(v)) for v in (True, False)] * 2
+    assert validate(ps, RULES, show) == []
+    assert show.calls == ["qwen3-vl:4b"]
+
+
+def test_validate_skips_ollama_lookup_for_non_ollama_ids():
+    show = fake_show({})
+    problems = validate([{"id": "openai:gpt-4o", "label": "a"}], RULES, show)
+    assert show.calls == []
+    assert len(problems) == 1
+
+
+def test_main_refusal_removes_stale_generated_output(tmp_path, capsys):
+    base_file, models = write_base(tmp_path)
+    main([str(base_file), "--models", str(models), "--sweep", "config.seed=1"])
+    out_file = tmp_path / "promptfooconfig.yaml"
+    assert is_generated(out_file)
+    with pytest.raises(SystemExit) as exc:
+        main([str(base_file), "--models", str(models), "--sweep", "config.think=low"])
+    assert exc.value.code == 2
+    assert not out_file.exists()
+    assert "removed stale" in capsys.readouterr().err
+
+
+def test_main_refusal_keeps_hand_written_output(tmp_path):
+    base_file, models = write_base(tmp_path)
+    out_file = tmp_path / "promptfooconfig.yaml"
+    out_file.write_text("description: mine\n")
+    with pytest.raises(SystemExit):
+        main([str(base_file), "--models", str(models), "--sweep", "config.think=low"])
+    assert out_file.read_text() == "description: mine\n"
+
+
+def test_main_uses_injected_show_model(tmp_path, capsys):
+    base_file, models = write_base(tmp_path)
+    with pytest.raises(SystemExit):
+        main([str(base_file), "--models", str(models), "--sweep", "config.seed=1"], show_model=fake_show({}))
+    assert "qwen3-vl:4b is not pulled in Ollama" in capsys.readouterr().err
