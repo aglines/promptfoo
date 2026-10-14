@@ -391,7 +391,15 @@ describe('evalCommand', () => {
       await Promise.all(
         ['private', 'public'].map((name) =>
           doEval(
-            { table: false, write: false, share: false, grader: 'file://grader.js' },
+            // Explicit --description, so the run keeps its name instead of the auto title.
+            {
+              table: false,
+              write: false,
+              share: false,
+              grader: 'file://grader.js',
+              // The CLI passes --description as a string; the type clashes with Command#description().
+              description: name as never,
+            },
             {
               description: name,
               outputPath: `${name}.json`,
@@ -2702,7 +2710,6 @@ describe('evalCommand', () => {
         expect(result.timeoutMs).toBe(timeoutMs ?? 999);
         expect(result.stripVars).toBe(name === 'watch-a');
         expect(result.record.config).toMatchObject({
-          description: name,
           metadata: { run: name },
           tags: { source: name },
         });

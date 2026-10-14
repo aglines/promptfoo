@@ -38,6 +38,7 @@ import {
   renderConfigEnvTemplates,
   resolveConfigs,
 } from '../util/config/load';
+import { buildAutoTitle } from '../util/configDisplay';
 import {
   filterProviders,
   getPersistedProviderFilterOptions,
@@ -866,13 +867,26 @@ async function doEvalWithEnv(
       };
     }
 
+    // Auto-name new runs "<timestamp> <values that differ across providers>" unless
+    // --description was passed explicitly.
+    const createdAt = new Date();
+    if (!resumeEval && !cmdObj.description) {
+      config = {
+        ...config,
+        description: buildAutoTitle(
+          testSuite.providers.map((p) => ({ id: p.id(), config: p.config })),
+          createdAt,
+        ),
+      };
+    }
+
     // Create or load eval record
     const author = getAuthor();
     const evalRecord = resumeEval
       ? resumeEval
       : cmdObj.write
-        ? await Eval.create(config, testSuite.prompts, { author, runtimeOptions })
-        : new Eval(config, { author, runtimeOptions });
+        ? await Eval.create(config, testSuite.prompts, { author, runtimeOptions, createdAt })
+        : new Eval(config, { author, runtimeOptions, createdAt });
 
     // Graceful pause support via Ctrl+C (only when writing to database)
     const abortController = new AbortController();

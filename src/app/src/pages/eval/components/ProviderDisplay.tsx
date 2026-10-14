@@ -297,6 +297,8 @@ export function ProviderConfigLine({
     return null;
   }
   return (
-    <div className="provider-config-line font-mono text-xs text-muted-foreground mb-2">{text}</div>
+    <div className="provider-config-line font-mono text-xs text-muted-foreground mb-2 [overflow-wrap:anywhere]">
+      {text}
+    </div>
   );
 }
