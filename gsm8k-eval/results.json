@@ -1,0 +1,983 @@
+{
+  "evalId": "eval-hKO-2026-10-12T10:39:21",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-10-12T10:39:21.409Z",
+    "prompts": [
+      {
+        "id": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "raw": "Answer with only the number: {{question}}",
+        "label": "Answer with only the number: {{question}}",
+        "provider": "ollama:chat:qwen3.5:4b",
+        "metrics": {
+          "score": 2,
+          "testPassCount": 2,
+          "testFailCount": 1,
+          "testErrorCount": 0,
+          "assertPassCount": 2,
+          "assertFailCount": 1,
+          "totalLatencyMs": 1300,
+          "tokenUsage": {
+            "prompt": 201,
+            "completion": 12,
+            "cached": 0,
+            "total": 213,
+            "numRequests": 3,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      },
+      {
+        "id": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "raw": "Answer with only the number: {{question}}",
+        "label": "Answer with only the number: {{question}}",
+        "provider": "ollama:chat:qwen3-vl:4b",
+        "metrics": {
+          "score": 2,
+          "testPassCount": 2,
+          "testFailCount": 1,
+          "testErrorCount": 0,
+          "assertPassCount": 2,
+          "assertFailCount": 1,
+          "totalLatencyMs": 25183,
+          "tokenUsage": {
+            "prompt": 189,
+            "completion": 1512,
+            "cached": 0,
+            "total": 1701,
+            "numRequests": 3,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 27,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 18, got 18",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "8ed3fba8-8580-41c2-abec-8fd025ce1a0b",
+        "latencyMs": 519,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 0,
+        "provider": {
+          "id": "ollama:chat:qwen3.5:4b",
+          "label": ""
+        },
+        "response": {
+          "output": "18",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 82,
+            "completion": 3,
+            "cached": 0,
+            "total": 85,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-0",
+          "vars": {
+            "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+            "expected": "18"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 82,
+          "completion": 3,
+          "cached": 0,
+          "total": 85,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "expected": "18"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 18, got 18",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "6edb9ba2-90d8-4bc5-80ad-1b08c4d1ee8c",
+        "latencyMs": 3540,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 1,
+        "provider": {
+          "id": "ollama:chat:qwen3-vl:4b",
+          "label": ""
+        },
+        "response": {
+          "output": "Thinking: <think>\nOkay, let's see. Janet's ducks lay 16 eggs per day. First, I need to figure out how many eggs she has left after she eats some and uses some for muffins. \n\nShe eats three eggs for breakfast every morning. Then she bakes muffins using four eggs. So total eggs used are 3 + 4 = 7 eggs per day. \n\nWait, the problem says she eats three for breakfast every morning and bakes muffins every day with four. So maybe the four is for the muffins, so total used is 3 + 4 = 7. \n\nShe starts with 16 eggs. So the remainder is 16 minus 7. Let me calculate that: 16 - 3 = 13, then 13 - 4 = 9. So 9 eggs left. \n\nThen she sells them at $2 per egg. So 9 eggs * $2 = $18. \n\nWait, let me check again. Ducks lay 16 eggs per day. She eats 3, so 16 - 3 = 13. Then she uses 4 for muffins, so 13 - 4 = 9. Then sells 9 at $2 each. 9*2=18. Yeah, that seems right. So the answer should be 18.\n\n18",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 78,
+            "completion": 293,
+            "cached": 0,
+            "total": 371,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 9,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-0",
+          "vars": {
+            "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+            "expected": "18"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 78,
+          "completion": 293,
+          "cached": 0,
+          "total": 371,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 9,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "expected": "18"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 3, got 3",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "0543c9f7-e860-4f87-ae66-ea5e27f7cb59",
+        "latencyMs": 258,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 0,
+        "provider": {
+          "id": "ollama:chat:qwen3.5:4b",
+          "label": ""
+        },
+        "response": {
+          "output": "3",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 44,
+            "completion": 2,
+            "cached": 0,
+            "total": 46,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-1",
+          "vars": {
+            "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+            "expected": "3"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 44,
+          "completion": 2,
+          "cached": 0,
+          "total": 46,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "expected": "3"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "Expected 3, got 3",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "cd7e623e-9cad-4255-84cf-a30a782bcd6f",
+        "latencyMs": 5645,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 1,
+        "provider": {
+          "id": "ollama:chat:qwen3-vl:4b",
+          "label": ""
+        },
+        "response": {
+          "output": "Thinking: <think>\nOkay, let's see. The problem says a robe takes 2 bolts of blue fiber and half that much white fiber. We need to find the total number of bolts.\n\nFirst, the blue fiber is 2 bolts. Then, the white fiber is half that much. So half of 2 bolts would be 1 bolt. Let me check that. If blue is 2, then white is half of 2, which is 1. So total bolts would be blue plus white, which is 2 + 1 = 3. Wait, is that right?\n\nWait, let me make sure. \"Half that much white fiber\" – \"that much\" refers to the blue fiber, which is 2 bolts. So half of 2 is 1. So white is 1 bolt. Total is 2 + 1 = 3. Yeah, that seems correct. So the answer should be 3.\n\n3",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 40,
+            "completion": 195,
+            "cached": 0,
+            "total": 235,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 9,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "gsm8k-1",
+          "vars": {
+            "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+            "expected": "3"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 40,
+          "completion": 195,
+          "cached": 0,
+          "total": 235,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 9,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "expected": "3"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "Expected 70000, got 350000",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "Expected 70000, got 350000",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "Expected 70000, got 350000",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "41942c7d-b971-4209-b01f-edc1dcc891b2",
+        "latencyMs": 523,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 0,
+        "provider": {
+          "id": "ollama:chat:qwen3.5:4b",
+          "label": ""
+        },
+        "response": {
+          "output": "350000",
+          "finishReason": "stop",
+          "tokenUsage": {
+            "prompt": 75,
+            "completion": 7,
+            "cached": 0,
+            "total": 82,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "gsm8k-2",
+          "vars": {
+            "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+            "expected": "70000"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 75,
+          "completion": 7,
+          "cached": 0,
+          "total": 82,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+          "expected": "70000"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "Expected 70000, got 150",
+        "gradingResult": {
+          "pass": false,
+          "score": 0,
+          "reason": "Expected 70000, got 150",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0,
+              "reason": "Expected 70000, got 150",
+              "assertion": {
+                "type": "python",
+                "value": "file://numeric_match.py"
+              }
+            }
+          ]
+        },
+        "id": "f263c1a1-8da7-4c46-a625-90f651f728bf",
+        "latencyMs": 15998,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer with only the number: Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+          "label": "Answer with only the number: {{question}}",
+          "config": {}
+        },
+        "promptId": "ca318258422d86506eb4ff0c740ab6187f9f2c235ad9fdb2b3d277303ebec595",
+        "promptIdx": 1,
+        "provider": {
+          "id": "ollama:chat:qwen3-vl:4b",
+          "label": ""
+        },
+        "response": {
+          "output": "Thinking: <think>\nOkay, let's try to figure out how much profit Josh made. First, let's break down the problem step by step. \n\nSo, Josh buys a house for $80,000. Then he puts in $50,000 in repairs. After the repairs, the value of the house increases by 150%. We need to find out how much profit he made. \n\nFirst, let's recall that profit is usually calculated as the final value minus the total cost. The total cost here would be the initial purchase price plus the repair costs. The final value is the increased value of the house after the repairs. \n\nLet's start with the initial purchase price: $80,000. Then he spends $50,000 on repairs. So the total cost to Josh is $80,000 + $50,000 = $130,000. Wait, but is the repair cost considered part of his expenses? Yes, because he had to pay for the repairs to make the house worth more. So the total amount he invested is the purchase price plus the repair costs.\n\nNow, the problem says the repairs increased the value of the house by 150%. So we need to find the new value of the house after the repairs. \n\nWait, when it says \"increased the value by 150%\", that means the new value is the original value (before repairs) plus 150% of the original value. Let me confirm: if something increases by 150%, the new value is 250% of the original value (because 100% + 150% = 250%). \n\nSo, the original value of the house before repairs was $80,000. Then the repairs increased it by 150%, so the new value is 80,000 * (1 + 1.5) = 80,000 * 2.5 = $200,000. Wait, is that right? Let me check: 150% of 80,000 is 120,000, so 80,000 + 120,000 = 200,000. Yes, that's correct. So the new value after repairs is $200,000.\n\nBut wait, is the \"value\" here the value after the repairs? Let me make sure. The problem says: \"He buys a house for $80,000 and then puts in $50,000 in repairs. This increased the value of the house by 150%.\" So the repairs caused the value to increase by 150%. So the original value (before repairs) is $80,000, and after repairs, it's 80,000 + 150% of 80,000 = 200,000. \n\nNow, to find profit, we need to know the total amount he spent (which is the purchase price plus the repair costs) and subtract that from the final value. \n\nTotal spent: 80,000 (purchase) + 50,000 (repairs) = 130,000. \n\nFinal value: 200,000. \n\nSo profit is 200,000 - 130,000 = 70,000. \n\nWait, let me verify again. Maybe the \"increased the value by 150%\" is relative to the value after repairs? No, the problem says \"this increased the value of the house by 150%\", so \"this\" refers to the repairs. So the value of the house (original value) increased by 150% due to the repairs. So original value is 80,000, after repairs, it's 80,000 * 2.5 = 200,000. \n\nTotal investment: 80,000 + 50,000 = 130,000. \n\nProfit: 200,000 - 130,000 = 70,000. \n\nIs there another way to interpret this? Let's see. Maybe the 150% increase is on the value after repairs? No, that wouldn't make sense. The problem says \"this increased the value of the house by 150%\", so \"this\" is the repairs. So the repairs caused the value to go up by 150% from the original value.",
+          "finishReason": "length",
+          "tokenUsage": {
+            "prompt": 71,
+            "completion": 1024,
+            "cached": 0,
+            "total": 1095,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 9,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          }
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "gsm8k-2",
+          "vars": {
+            "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+            "expected": "70000"
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "file://numeric_match.py"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 71,
+          "completion": 1024,
+          "cached": 0,
+          "total": 1095,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 9,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+          "expected": "70000"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      }
+    ],
+    "stats": {
+      "successes": 4,
+      "failures": 2,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 390,
+        "completion": 1524,
+        "cached": 0,
+        "total": 1914,
+        "numRequests": 6,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 27,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 16708,
+      "evaluationDurationMs": 16708
+    }
+  },
+  "config": {
+    "description": "GSM8k",
+    "prompts": ["Answer with only the number: {{question}}"],
+    "providers": [
+      {
+        "id": "ollama:chat:qwen3.5:4b",
+        "config": {
+          "num_predict": 1024,
+          "temperature": 0.7,
+          "top_p": 0.9,
+          "think": false,
+          "showThinking": true,
+          "keep_alive": "30m"
+        }
+      },
+      {
+        "id": "ollama:chat:qwen3-vl:4b",
+        "config": {
+          "num_predict": 1024,
+          "temperature": 0.7,
+          "top_p": 0.9,
+          "think": false,
+          "showThinking": true,
+          "keep_alive": "30m"
+        }
+      }
+    ],
+    "tests": [
+      {
+        "description": "gsm8k-0",
+        "vars": {
+          "question": "Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?",
+          "expected": "18"
+        }
+      },
+      {
+        "description": "gsm8k-1",
+        "vars": {
+          "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in total does it take?",
+          "expected": "3"
+        }
+      },
+      {
+        "description": "gsm8k-2",
+        "vars": {
+          "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  How much profit did he make?",
+          "expected": "70000"
+        }
+      }
+    ],
+    "outputPath": ["results.json"],
+    "extensions": [],
+    "defaultTest": {
+      "assert": [
+        {
+          "type": "python",
+          "value": "file://numeric_match.py"
+        }
+      ]
+    },
+    "basePath": "/home/ad/code/promptfoo/gsm8k-eval"
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.124.1",
+    "nodeVersion": "v24.21.0",
+    "platform": "linux",
+    "arch": "x64",
+    "exportedAt": "2026-10-12T10:39:38.168Z",
+    "evaluationCreatedAt": "2026-10-12T10:39:21.409Z"
+  },
+  "vars": ["question", "expected"],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": true,
+    "repeat": 1,
+    "maxConcurrency": 4,
+    "cache": false
+  }
+}
